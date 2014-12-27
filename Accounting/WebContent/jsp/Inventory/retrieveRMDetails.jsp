@@ -1,0 +1,1 @@
+${rawMaterialDesc}^${rawMaterialQty}~${rawMaterialAQty}

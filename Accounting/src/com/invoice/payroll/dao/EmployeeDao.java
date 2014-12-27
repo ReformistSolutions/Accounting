@@ -1,0 +1,80 @@
+package com.invoice.payroll.dao;
+import java.util.List;
+
+import com.invoice.payroll.beans.BreakupByEmployee;
+import com.invoice.payroll.beans.ComposeMail;
+import com.invoice.payroll.beans.EmployeeBeans;
+import com.invoice.payroll.beans.EmployeeLeave;
+import com.invoice.payroll.beans.Leave;
+import com.invoice.payroll.beans.Payhead;
+import com.invoice.payroll.beans.ProcessPayroll;
+import com.invoice.payroll.beans.SalaryBeans;
+
+public interface EmployeeDao 
+{
+	 public int saveEmployeedtls(EmployeeBeans employeeBeans, SalaryBeans salaryBeans,String pass);
+	 public  EmployeeBeans generateId();
+	 public List<EmployeeBeans>show();
+	 public List<EmployeeBeans> showEmployee(String emp_ID);
+	 public int updateEmployeedtl(EmployeeBeans employeeBeans);
+	 public int delete(String emp_ID);
+	 public List<EmployeeBeans>inactiveshow();
+	 public List<EmployeeBeans>showAdmin();
+	 public int cnttotal();
+	 public int cntactive();
+	 public int cntinactive();
+	 public EmployeeBeans showEmployeeEmpIdDao(String txtEmpId);
+	 public int sendMail(String loginEmpId,ComposeMail composeMail);
+	 public int addEmployeeDao(EmployeeBeans emp, String pass);
+	 public List<Payhead> showPayhead(String type);
+	 public List<SalaryBeans> showSal(String emp_ID);
+	 public List<EmployeeLeave> showLeaves(String emp_ID);
+	 public List<BreakupByEmployee> showBreakByEmp();
+	 public List<EmployeeBeans> salaryProcess();
+	 public List<EmployeeBeans> processPayroll();
+	 public List<Payhead> showVeriableName();
+	 public int retriveVeriables(String empid);
+	 public List<SalaryBeans> showEarning(String emp_ID, int month, int year);	 
+	 public List<SalaryBeans> showDeduction(String emp_ID,int month,int year);
+	 public String showNetSalary(String emp_ID,int month,int year);
+	 public String showEarningAmount(String emp_ID,int month,int year); 
+	 public float showDeductionAmount(String emp_ID,int month,int year);
+	 public List<EmployeeBeans> viewSalary(String emp_ID);
+	 public List<EmployeeBeans> retriveSalarySlip(String month,String year,String empid);
+	 public List<ProcessPayroll> processDate(); 
+	 public List<ProcessPayroll> showConfirmPayroll();
+	 public List<ProcessPayroll> showDaysDeduction(String emp_ID,int month,int year);
+	 public int saveLeaves(Leave leave); 
+	 public List<Leave> editLeave(String empid,String leaveid);
+	 public int updateLeave(Leave leave);
+	 public List<SalaryBeans> showBreakupheadList();
+	 public List<SalaryBeans> showBreakupamtList();
+	 public List<EmployeeBeans> empList();
+	 
+	 public List<SalaryBeans> showBreakupheadListW();
+	 public List<SalaryBeans> showBreakupamtListW();
+	 public List<EmployeeBeans> empListW();
+	 
+	 public List<ComposeMail> composeMail(String emp_ID);
+	 public String shwoCompdate();
+	 public int restoreEmp(String emp_ID);
+	 public int changePassword(EmployeeBeans employeeBeans);
+	 public String ShowAdd();
+	 public String ShowDelete();
+	 public String ShowUpdate();
+	 public String ShowRestore();
+	 public String ShowNotAdd();
+	 public String ShowNotDelete();
+	 public String ShowNotUpdate();
+	 public String ShowNotRestore();
+	 public String ShowApproved();
+	 public String ShowNotApproved();
+	 public String ShowRejected();
+	 public String ShowNotRejected();
+	 public int saveDepartment(String deptName,String deptDesc);
+	 public List<EmployeeBeans> retriveDept();
+	 public int saveDesignation(String desigName,String desigDesc);
+	 public List<EmployeeBeans> retriveDesig();
+	 public int retriveUserName(String userName); 
+	// public int uploadFile(EmployeeBeans uploadFile,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; 	
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.1.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+    <!--      <mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="resources/"/>
+  -->
+    <context:component-scan
+        base-package="com.invoice" />
+       
+       <tx:annotation-driven transaction-manager="transactionManager" />
+ 
+ 
+   <bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+     <property name="url" value="jdbc:mysql://localhost:3306/invoice"/>
+      <property name="username" value="root"/>
+      <property name="password" value="scott"/>
+   </bean>
+   
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"/>
+</bean>
+   
+   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+       <property name="dataSource" ref="dataSource"></property>
+   </bean>
+ <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+      
+<!-- Banking Bean -->
+<bean id="withdrawDaoImpl" class="com.invoice.banking.dao.WithdrawDaoImpl"></bean>
+ <bean id="withdrawServiceImpl" class="com.invoice.banking.service.WithdrawServiceImpl"></bean>
+ <bean id="depositDaoImpl" class="com.invoice.banking.dao.DepositDaoImpl"></bean>
+ <bean id="depositServiceImpl" class="com.invoice.banking.service.DepositServiceImpl"></bean>
+ <bean id="transferDaoImpl" class="com.invoice.banking.dao.TransferDaoImpl"></bean>
+ <bean id="transferServiceImpl" class="com.invoice.banking.service.TransferServiceImpl"></bean>         
+<!-- /Banking Bean -->
+
+<!-- Inventory -->
+<bean id="createNewProductServiceImplementation" class="com.invoice.inventory.service.CreateNewProductServiceImplementation"></bean>
+<bean id="issueForProductionServiceImplementation" class="com.invoice.inventory.service.IssueForProductionServiceImplementation"></bean>
+<bean id="receiveforSalesServiceImplementation" class="com.invoice.inventory.service.ReceiveforSalesServiceImplementation"></bean>
+<bean id="recordTransferredServiceImplementation" class="com.invoice.inventory.service.RecordTransferredServiceImplementation"></bean>
+<bean id="recordWastageServiceImplementation" class="com.invoice.inventory.service.RecordWastageServiceImplementation"></bean>
+<!-- end Inventory -->
+
+<!-- payroll -->
+<bean id="EmployeeServiceImp" class="com.invoice.payroll.service.EmployeeServiceImp"></bean>
+<bean id="GenPasswordImpl" class="com.invoice.payroll.service.GenPasswordImpl"></bean>
+<bean id="InitiateProcessServiceImpl" class="com.invoice.payroll.service.InitiateProcessServiceImpl"></bean>
+<bean id="EmployeedetailPdf" class="com.invoice.payroll.service.EmployeedetailPdf"></bean>
+<!-- end payroll -->
+
+<!--  purchase-->
+<bean id="PurchaseServiceImpl" class="com.invoice.purchase.service.PurchaseServiceImpl"></bean>
+ <bean id="purchaseEnquiryPdf" class="com.invoice.purchase.service.PurchaseEnquiryPdf"></bean>
+ <bean id="purchaseQuotationPdf" class="com.invoice.purchase.service.PurchaseQuotationPdf"></bean>
+ <bean id="purchaseOrderPDF" class="com.invoice.purchase.service.PurchaseOrderPDF"></bean>
+ <bean id="purchasesPDF" class="com.invoice.purchase.service.PurchasesPDF"></bean>
+ <bean id="voucherPdf" class="com.invoice.purchase.service.PurchaseVoucherPdf"></bean>
+ <bean id="purchaseOrderServiceImpl" class="com.invoice.purchase.service.PurchaseOrderServiceImpl"></bean>
+ <!-- <bean id="purchaseServiceImpl" class="com.invoice.purchase.service.PurchaseServiceImpl"></bean> -->
+ <bean id="quotationServiceImpl" class="com.invoice.purchase.service.QuotationServiceImpl"></bean>
+<!-- end purchase -->
+
+<!-- customer -->
+<bean id="customerServiceImpl" class="com.invoice.customer.service.CustomerServiceImpl"></bean>
+
+<!-- end customer -->
+
+<!-- sales -->
+<bean id="enquiryServiceImpl" class="com.invoice.sales.service.EnquiryServiceImpl"></bean>
+ <bean id="estimateServiceImpl" class="com.invoice.sales.service.EstimateServiceImpl"></bean>      
+ <bean id="orderServiceImpl" class="com.invoice.sales.service.OrderServiceImpl"></bean>
+ <bean id="invoiceServiceImpl" class="com.invoice.sales.service.InvoiceServiceImpl"></bean>
+ <bean id="paymentServiceImpl" class="com.invoice.sales.service.PaymentServiceImpl"></bean>
+ <bean id="deliveryChallanServiceImpl" class="com.invoice.sales.service.DeliveryChallanServiceImpl"></bean>
+ <bean id="receiptServiceImpl" class="com.invoice.sales.service.ReceiptServiceImpl"></bean>
+ <bean id="enquiryPdf" class="com.invoice.sales.service.EnquiryPdf"></bean>
+ <bean id="estimatePdf" class="com.invoice.sales.service.EstimatePdf"></bean>
+ <bean id="salesOrderPdf" class="com.invoice.sales.service.SalesOrderPdf"></bean>
+ <bean id="salesInvoicePdf" class="com.invoice.sales.service.SalesInvoicePdf"></bean>
+ <bean id="salesReceiptsPDF" class="com.invoice.sales.service.SalesReceiptsPDF"></bean>
+ <bean id="deliveryChallanPDF" class="com.invoice.sales.service.DeliveryChallanPDF"></bean>
+<!-- end sales -->
+
+<!-- accounting -->
+ <bean id="creditNotesServiceImpl" class="com.invoice.accounting.service.CreditNotesServiceImpl"></bean>
+ <bean id="debitNotesServiceImpl" class="com.invoice.accounting.service.DebitNotesServiceImpl"> </bean>  
+ <bean id="addNewAccountImpl" class="com.invoice.accounting.service.AddNewAccountServiceImpl"></bean> 
+ <bean id="AccountGroupImpl" class="com.invoice.accounting.service.AccountGroupServiceImpl"></bean>  
+ <bean id="addNewTaxImpl" class="com.invoice.accounting.service.AddTaxServiceImpl"></bean>  
+ <bean id="auditorServiceImpl" class="com.invoice.accounting.service.AuditorServiceImpl"></bean>   
+<!-- end accounting -->
+
+<!-- Reports -->
+<bean id="reportsServiceImpl" class="com.invoice.reports.service.ReportsServiceImpl"></bean>
+<bean id="paymentAServiceImpl" class="com.invoice.reports.service.paymentAdviceServiceImpl"></bean>
+<bean id="paymentAdvicePDF" class="com.invoice.reports.service.PaymentAdvicePDF"></bean>
+
+<!--end Reports -->
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+       <property name="order" value="2"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+     <bean id="viewResolver1" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+  		<property name="order" value="1"/>
+  		<property name="basename" value="views"/>
+	</bean>
+	
+<!-- 
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		 setting maximum upload size
+		<property name="maxUploadSize" value="100000" />
+	</bean> -->
+	
+</beans>

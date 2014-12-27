@@ -49,7 +49,8 @@ $("#${voucher}").css('color','red');
              <li><a href="purchaseOrder.do" id="${order}" data-toggle="tooltip" data-placement="bottom" title="Order"><i class="icon-file-alt"></i> Orders</a> </li>
              <li><a href="purchases.do" id="${purchases1}" data-toggle="tooltip" data-placement="bottom" title="Purchase"><i class="icon-file-alt"></i> Purchases</a> </li>                         
              <!-- <li><a href="purchasePayment.do" ><i class="icon-file-alt"></i> Payment</a> </li> -->
-             <li><a href="purchaseVoucher.do" id="${voucher}" data-toggle="tooltip" data-placement="bottom" title="Voucher"><i class="icon-file-alt"></i> Voucher</a> </li>             
+             <li><a href="purchaseVoucher.do" id="${voucher}" data-toggle="tooltip" data-placement="bottom" title="Voucher"><i class="icon-file-alt"></i> Voucher</a> </li>
+             <li><a href="purchaseVoucher.do" id="${voucher}" data-toggle="tooltip" data-placement="bottom" title="Voucher"><i class="icon-file-alt"></i> Testing</a> </li>             
             </ol>
          
 		</div>

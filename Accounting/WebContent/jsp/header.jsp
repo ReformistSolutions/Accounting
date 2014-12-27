@@ -73,6 +73,7 @@ $(function () {
             <li id="${payroll}"><a href="payroll.do"  accesskey="y"><i class="fa fa-inr"></i> Pa<span style="text-decoration: underline;">y</span>roll</a></li>	
             <li id="${banking}"><a href="banking.do"  accesskey="b"><i class="fa fa-building-o"></i> <span style="text-decoration: underline;">B</span>anking</a></li>
             <li id="${accounting}"><a href="accounting.do"  accesskey="a"><i class="fa fa-building-o"></i> <span style="text-decoration: underline;">A</span>ccounting</a></li>
+            <li id="${accounting}"><a href="accounting.do"  accesskey="a"><i class="fa fa-building-o"></i> <span style="text-decoration: underline;">A</span>Testing</a></li>
             <li class="dropdown ">
            
              <!--  <a href="accounting.do" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-book"></i> Accounting<b class="caret"></b></a>
